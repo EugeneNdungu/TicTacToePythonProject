@@ -18,11 +18,8 @@ def displayBoard():
 displayBoard()  
 for i in range(3):
     player1 = str(input('Player 1. Do you want to be X or O?\n'))
-    if player1 == 'X':
-        player2 = 'O'
-        break
-    elif player1 == 'O':
-        player2 = 'X'
+    player1 = player1.upper()
+    if player1 == 'X' or player1 == 'O':
         break
     else:
         if i == 2:
@@ -30,10 +27,78 @@ for i in range(3):
             break
         print('Invalid input! Try again')
 
-pstn = int(input('Player1, select position: '))
-if pstn == 1:
-    if board[2][0] == 'X' or board[2][0] == 'O':
-        print("Sorry, position already occupied, please choose another position")
+game_ended = False
+
+while(not game_ended):
+    pstn = int(input('Player, select position: '))
+    if pstn == 1:
+        if board[2][0] == 'X' or board[2][0] == 'O':
+            print("Sorry, position already occupied, please choose another position")
+            continue
+        else:
+            board[2][0] = player1
+        displayBoard()
+    elif pstn == 2:
+        if board[2][1] == 'X' or board[2][1] == 'O':
+            print("Sorry, position already occupied, please choose another position")
+            continue
+        else:
+            board[2][1] = player1
+        displayBoard()
+    elif pstn == 3:
+        if board[2][2] == 'X' or board[2][2] == 'O':
+            print("Sorry, position already occupied, please choose another position")
+            continue
+        else:
+            board[2][2] = player1
+        displayBoard()
+    elif pstn == 4:
+        if board[1][0] == 'X' or board[1][0] == 'O':
+            print("Sorry, position already occupied, please choose another position")
+            continue
+        else:
+            board[1][0] = player1
+        displayBoard()
+    elif pstn == 5:
+        if board[1][1] == 'X' or board[1][1] == 'O':
+            print("Sorry, position already occupied, please choose another position")
+            continue
+        else:
+            board[1][1] = player1
+        displayBoard()
+    elif pstn == 6:
+        if board[1][2] == 'X' or board[1][2] == 'O':
+            print("Sorry, position already occupied, please choose another position")
+            continue
+        else:
+            board[1][2] = player1
+        displayBoard()
+    elif pstn == 7:
+        if board[0][0] == 'X' or board[0][0] == 'O':
+            print("Sorry, position already occupied, please choose another position")
+            continue
+        else:
+            board[0][0] = player1
+        displayBoard()
+    elif pstn == 8:
+        if board[0][1] == 'X' or board[0][1] == 'O':
+            print("Sorry, position already occupied, please choose another position")
+            continue
+        else:
+            board[0][1] = player1
+        displayBoard()
+    elif pstn == 9:
+        if board[0][2] == 'X' or board[0][2] == 'O':
+            print("Sorry, position already occupied, please choose another position")
+            continue
+        else:
+            board[0][2] = player1
+        displayBoard()
     else:
-        board[2][0] = player1
-    displayBoard()
+        print("Invalid input! Please try again")
+        continue
+    if player1 == 'X':
+        player1 = 'O'
+    else:
+        player1 = 'X'
+    
