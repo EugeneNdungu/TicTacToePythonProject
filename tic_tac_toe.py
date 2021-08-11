@@ -15,7 +15,11 @@ def displayBoard():
             continue
         print('-'*9)
 
-displayBoard()  
+displayBoard() 
+
+game_ended = False
+count = 0
+
 for i in range(3):
     player1 = str(input('Player 1. Do you want to be X or O?\n'))
     player1 = player1.upper()
@@ -24,14 +28,14 @@ for i in range(3):
     else:
         if i == 2:
             print("Sorry. Out of trys. Better luck next time")
+            game_ended = True
             break
         print('Invalid input! Try again')
-
-game_ended = False
 
 # Check for winner
 def checkWin():
     global game_ended
+    global count
     if board[2][0] == board[2][1] and board[2][0] == board[2][2]:
         print("Player",board[2][0], "has won")
         game_ended = True
@@ -55,6 +59,9 @@ def checkWin():
         game_ended = True
     elif board[2][2] == board[1][1] and board[2][2] == board[0][0]:
         print("Player",board[2][2], "has won")   
+        game_ended = True
+    elif count == 8:
+        print("No winner. Game over")
         game_ended = True
 
 while(not game_ended):
@@ -136,6 +143,8 @@ while(not game_ended):
         continue
     if player1 == 'X':
         player1 = 'O'
+        count += 1
     else:
         player1 = 'X'
+        count += 1
     
