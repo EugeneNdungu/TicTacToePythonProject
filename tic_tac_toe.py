@@ -29,6 +29,34 @@ for i in range(3):
 
 game_ended = False
 
+# Check for winner
+def checkWin():
+    global game_ended
+    if board[2][0] == board[2][1] and board[2][0] == board[2][2]:
+        print("Player",board[2][0], "has won")
+        game_ended = True
+    elif board[1][0] == board[1][1] and board[1][0] == board[1][2]:
+        print("Player",board[1][0], "has won")
+        game_ended = True
+    elif board[0][0] == board[0][1] and board[0][0] == board[0][2]:
+        print("Player",board[0][0], "has won")
+        game_ended = True
+    elif board[2][0] == board[1][0] and board[2][0] == board[0][0]:
+        print("Player",board[2][0], "has won")
+        game_ended = True
+    elif board[2][1] == board[1][1] and board[2][1] == board[0][1]:
+        print("Player",board[2][1], "has won")
+        game_ended = True
+    elif board[2][2] == board[1][2] and board[2][2] == board[0][2]:
+        print("Player",board[2][2], "has won")
+        game_ended = True
+    elif board[2][0] == board[1][1] and board[2][0] == board[0][2]:
+        print("Player",board[2][0], "has won")
+        game_ended = True
+    elif board[2][2] == board[1][1] and board[2][2] == board[0][0]:
+        print("Player",board[2][2], "has won")   
+        game_ended = True
+
 while(not game_ended):
     pstn = int(input('Player, select position: '))
     if pstn == 1:
@@ -38,6 +66,7 @@ while(not game_ended):
         else:
             board[2][0] = player1
         displayBoard()
+        checkWin()
     elif pstn == 2:
         if board[2][1] == 'X' or board[2][1] == 'O':
             print("Sorry, position already occupied, please choose another position")
@@ -45,6 +74,7 @@ while(not game_ended):
         else:
             board[2][1] = player1
         displayBoard()
+        checkWin()
     elif pstn == 3:
         if board[2][2] == 'X' or board[2][2] == 'O':
             print("Sorry, position already occupied, please choose another position")
@@ -52,6 +82,7 @@ while(not game_ended):
         else:
             board[2][2] = player1
         displayBoard()
+        checkWin()
     elif pstn == 4:
         if board[1][0] == 'X' or board[1][0] == 'O':
             print("Sorry, position already occupied, please choose another position")
@@ -59,6 +90,7 @@ while(not game_ended):
         else:
             board[1][0] = player1
         displayBoard()
+        checkWin()
     elif pstn == 5:
         if board[1][1] == 'X' or board[1][1] == 'O':
             print("Sorry, position already occupied, please choose another position")
@@ -66,6 +98,7 @@ while(not game_ended):
         else:
             board[1][1] = player1
         displayBoard()
+        checkWin()
     elif pstn == 6:
         if board[1][2] == 'X' or board[1][2] == 'O':
             print("Sorry, position already occupied, please choose another position")
@@ -73,6 +106,7 @@ while(not game_ended):
         else:
             board[1][2] = player1
         displayBoard()
+        checkWin()
     elif pstn == 7:
         if board[0][0] == 'X' or board[0][0] == 'O':
             print("Sorry, position already occupied, please choose another position")
@@ -80,6 +114,7 @@ while(not game_ended):
         else:
             board[0][0] = player1
         displayBoard()
+        checkWin()
     elif pstn == 8:
         if board[0][1] == 'X' or board[0][1] == 'O':
             print("Sorry, position already occupied, please choose another position")
@@ -87,6 +122,7 @@ while(not game_ended):
         else:
             board[0][1] = player1
         displayBoard()
+        checkWin()
     elif pstn == 9:
         if board[0][2] == 'X' or board[0][2] == 'O':
             print("Sorry, position already occupied, please choose another position")
@@ -94,6 +130,7 @@ while(not game_ended):
         else:
             board[0][2] = player1
         displayBoard()
+        checkWin()
     else:
         print("Invalid input! Please try again")
         continue
