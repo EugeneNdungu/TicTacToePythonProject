@@ -1,19 +1,18 @@
 """
 The program is a tic tac toe game that allows to players to play the game
 """
-# Initialize a list to store the values
-board = [
-    ['7','8','9'],
-    ['4','5','6'],
-    ['1','2','3']
-]
+# Initialize a dictionary to store the values
+board = {'7':' ','8':' ','9':' ',
+         '4':' ','5':' ','6':' ',
+         '1':' ','2':' ','3':' '
+        }
 # Define a function to display the board
 def displayBoard():
-    for row in board:
-        print(row[0],'|',row[1],'|',row[2])
-        if row == board[2]:
-            continue
-        print('-'*9)
+    print(board['7'] + '|' + board['8'] + '|' +board['9'])
+    print('-+-+-')
+    print(board['4'] + '|' + board['5'] + '|' +board['6'])
+    print('-+-+-')
+    print(board['1'] + '|' + board['2'] + '|' +board['3'])
 
 displayBoard() 
 
@@ -33,118 +32,49 @@ for i in range(3):
         print('Invalid input! Try again')
 
 # Check for winner
-def checkWin():
-    global game_ended
-    global count
-    if board[2][0] == board[2][1] and board[2][0] == board[2][2]:
-        print("Player",board[2][0], "has won")
-        game_ended = True
-    elif board[1][0] == board[1][1] and board[1][0] == board[1][2]:
-        print("Player",board[1][0], "has won")
-        game_ended = True
-    elif board[0][0] == board[0][1] and board[0][0] == board[0][2]:
-        print("Player",board[0][0], "has won")
-        game_ended = True
-    elif board[2][0] == board[1][0] and board[2][0] == board[0][0]:
-        print("Player",board[2][0], "has won")
-        game_ended = True
-    elif board[2][1] == board[1][1] and board[2][1] == board[0][1]:
-        print("Player",board[2][1], "has won")
-        game_ended = True
-    elif board[2][2] == board[1][2] and board[2][2] == board[0][2]:
-        print("Player",board[2][2], "has won")
-        game_ended = True
-    elif board[2][0] == board[1][1] and board[2][0] == board[0][2]:
-        print("Player",board[2][0], "has won")
-        game_ended = True
-    elif board[2][2] == board[1][1] and board[2][2] == board[0][0]:
-        print("Player",board[2][2], "has won")   
-        game_ended = True
-    elif count == 8:
-        print("No winner. Game over")
-        game_ended = True
+
 
 while(not game_ended):
-    pstn = int(input('Player, select position: '))
-    if pstn == 1:
-        if board[2][0] == 'X' or board[2][0] == 'O':
-            print("Sorry, position already occupied, please choose another position")
-            continue
+    pstn = str(input('Player '  + player1 + ', select position: '))
+    # Check to see if the position is filled
+    if board[pstn] == ' ':
+        board[pstn] = player1
+        if player1 == 'X':
+            player1 = 'O'
         else:
-            board[2][0] = player1
-        displayBoard()
-        checkWin()
-    elif pstn == 2:
-        if board[2][1] == 'X' or board[2][1] == 'O':
-            print("Sorry, position already occupied, please choose another position")
-            continue
-        else:
-            board[2][1] = player1
-        displayBoard()
-        checkWin()
-    elif pstn == 3:
-        if board[2][2] == 'X' or board[2][2] == 'O':
-            print("Sorry, position already occupied, please choose another position")
-            continue
-        else:
-            board[2][2] = player1
-        displayBoard()
-        checkWin()
-    elif pstn == 4:
-        if board[1][0] == 'X' or board[1][0] == 'O':
-            print("Sorry, position already occupied, please choose another position")
-            continue
-        else:
-            board[1][0] = player1
-        displayBoard()
-        checkWin()
-    elif pstn == 5:
-        if board[1][1] == 'X' or board[1][1] == 'O':
-            print("Sorry, position already occupied, please choose another position")
-            continue
-        else:
-            board[1][1] = player1
-        displayBoard()
-        checkWin()
-    elif pstn == 6:
-        if board[1][2] == 'X' or board[1][2] == 'O':
-            print("Sorry, position already occupied, please choose another position")
-            continue
-        else:
-            board[1][2] = player1
-        displayBoard()
-        checkWin()
-    elif pstn == 7:
-        if board[0][0] == 'X' or board[0][0] == 'O':
-            print("Sorry, position already occupied, please choose another position")
-            continue
-        else:
-            board[0][0] = player1
-        displayBoard()
-        checkWin()
-    elif pstn == 8:
-        if board[0][1] == 'X' or board[0][1] == 'O':
-            print("Sorry, position already occupied, please choose another position")
-            continue
-        else:
-            board[0][1] = player1
-        displayBoard()
-        checkWin()
-    elif pstn == 9:
-        if board[0][2] == 'X' or board[0][2] == 'O':
-            print("Sorry, position already occupied, please choose another position")
-            continue
-        else:
-            board[0][2] = player1
-        displayBoard()
-        checkWin()
-    else:
-        print("Invalid input! Please try again")
-        continue
-    if player1 == 'X':
-        player1 = 'O'
+            player1 = 'X'
         count += 1
+        displayBoard()
+    elif board[pstn] == 'X' or board[pstn] == 'O':
+        print('Sorry, that position has been filled. Please try again')
     else:
-        player1 = 'X'
-        count += 1
+        print('Invalid position! Try again')
+    if count >= 5:
+        if board['1'] == board['2'] and board['2'] == board['3']:
+            print('Player', board['1'], 'has won the game.')
+            break
+        elif board['4'] == board['5'] and board['5'] == board['6']:
+            print('Player', board['4'], 'has won the game.')
+            break
+        elif board['7'] == board['8'] and board['8'] == board['9']:
+            print('Player', board['7'], 'has won the game.')
+            break
+        elif board['1'] == board['4'] and board['4'] == board['7']:
+            print('Player', board['1'], 'has won the game.')
+            break
+        elif board['2'] == board['5'] and board['5'] == board['8']:
+            print('Player', board['2'], 'has won the game.')
+            break
+        elif board['3'] == board['6'] and board['6'] == board['9']:
+            print('Player', board['3'], 'has won the game.')
+            break
+        elif board['1'] == board['5'] and board['5'] == board['9']:
+            print('Player', board['1'], 'has won the game.')
+            break
+        elif board['3'] == board['5'] and board['5'] == board['7']:
+            print('Player', board['3'], 'has won the game.')
+            break
+        elif count == 9:
+            print('Game is a tie')
+
     
