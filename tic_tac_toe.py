@@ -35,19 +35,22 @@ def game():
 
 
     while(not game_ended):
-        pstn = str(input('Player '  + player1 + ', select position: '))
-        # Check to see if the position is filled
-        if board[pstn] == ' ':
-            board[pstn] = player1
-            if player1 == 'X':
-                player1 = 'O'
-            else:
-                player1 = 'X'
-            count += 1
-            displayBoard()
-        elif board[pstn] == 'X' or board[pstn] == 'O':
-            print('Sorry, that position has been filled. Please try again')
-            continue
+        try:
+            pstn = str(input('Player '  + player1 + ', select position: '))
+            # Check to see if the position is filled
+            if board[pstn] == ' ':
+                board[pstn] = player1
+                if player1 == 'X':
+                    player1 = 'O'
+                else:
+                    player1 = 'X'
+                count += 1
+                displayBoard()
+            elif board[pstn] == 'X' or board[pstn] == 'O':
+                print('Sorry, that position has been filled. Please try again')
+                continue
+        except KeyError:
+            print('Position '+ pstn + ' out of range')
 
         if count >= 5:
             if board['1'] == board['2'] == board['3'] != ' ':
